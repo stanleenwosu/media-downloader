@@ -1,13 +1,16 @@
 import React from 'react';
-import GetFile from './components/GetFile'
-import Header from './components/Header'
-import './App.css'
+import Header from './components/Header';
+import './App.css';
+import GetMedia from './components/GetMedia';
+import Footer from './components/Footer';
+
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <GetFile />
+      <GetMedia />
+      <Footer />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react'
-import MediaFile from './MediaFile'
+import MediaThumbnail from './MediaThumbnail'
 import VideoList from './VideoList'
 import '../App.css';
 
 
-class GetFile extends React.Component {
+class GetMedia extends React.Component {
 
     constructor(props) {
         super(props);
@@ -14,11 +14,11 @@ class GetFile extends React.Component {
             streams: []
         };
 
-        this.getUrl = event => {
+        this.getMediaUrl = event => {
             this.setState({ url: event.target.value })
         }
 
-        this.getFile = async () => {
+        this.getMediaDetails = async () => {
             let url = this.state.url
             console.log(url)
             this.getDownloadUrl(url)
@@ -54,15 +54,15 @@ class GetFile extends React.Component {
     render() {
         return (
             <div>
-                <input className="input-url" type="text" onChange={this.getUrl} />
-                <div className="Get-file">
-                    <button onClick={this.getFile}>Get Media</button>
+                <div className="input-url" ><input type="text" placeholder="Enter Media URL" onChange={this.getMediaUrl} /></div>
+                <div className="get-media">
+                    <button id="get-media-btn" onClick={this.getMediaDetails}>Get Media</button>
+                    <MediaThumbnail source={this.state.thumbnail} />
                     <VideoList streams={this.state.streams} />
-                    <MediaFile source={this.state.thumbnail} />
                 </div>
             </div>
         )
     }
 }
 
-export default GetFile
+export default GetMedia
