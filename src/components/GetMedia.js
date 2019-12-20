@@ -10,7 +10,7 @@ class GetMedia extends React.Component {
         super(props);
         this.state = {
             url: '',
-            thumbnail: 'https://via.placeholder.com/300',
+            thumbnail: '',
             streams: []
         };
 
