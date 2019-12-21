@@ -4,7 +4,7 @@ class Footer extends React.Component {
     render() {
         return (
             <div className="footer">
-                <footer>Built by <a href="">bits_of_lee</a></footer>
+                <footer>Built by <a href="https://github.com/stanleenwosu">bits_of_lee</a></footer>
             </div>
         )
     }

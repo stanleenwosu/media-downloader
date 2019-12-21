@@ -11,7 +11,9 @@ class GetMedia extends React.Component {
         this.state = {
             url: '',
             thumbnail: '',
-            streams: []
+            streams: [],
+            isDataAvailable: false,
+            showSpinner: false
         };
 
         this.getMediaUrl = event => {
@@ -20,6 +22,7 @@ class GetMedia extends React.Component {
 
         this.getMediaDetails = async () => {
             let url = this.state.url
+            this.setState({ showSpinner: true })
             console.log(url)
             this.getDownloadUrl(url)
         }
@@ -31,7 +34,7 @@ class GetMedia extends React.Component {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "getvideo.p.rapidapi.com",
-                "x-rapidapi-key": "f6203620e3msh3f3fa75e3687e56p147403jsn0426e9607de2",
+                "x-rapidapi-key": process.env.RAPID_API_KEY,
                 "content-type": "application/json"
             }
         })
@@ -41,7 +44,8 @@ class GetMedia extends React.Component {
                         console.log(data)
                         this.setState({
                             thumbnail: data.thumbnail,
-                            streams: data.streams
+                            streams: data.streams,
+                            isDataAvailable: true
                         })
                     })
             })
@@ -51,14 +55,34 @@ class GetMedia extends React.Component {
 
     }
 
+    checkIFDataIsAvailable() {
+        if (this.state.isDataAvailable && this.state.showSpinner) {
+            return (
+                <div>
+                    <MediaThumbnail source={this.state.thumbnail} />
+                    <VideoList streams={this.state.streams} />
+                </div>
+            )
+        }
+        else if (this.state.showSpinner === true) {
+            return (
+                <div>
+                    <img width="100px" height="100px" src="spinner.gif" alt="spinner"></img>
+                    <p style={{ color: 'black' }}>Fetching Data</p>
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <div>
                 <div className="input-url" ><input type="text" placeholder="Enter Media URL" onChange={this.getMediaUrl} /></div>
                 <div className="get-media">
                     <button id="get-media-btn" onClick={this.getMediaDetails}>Get Media</button>
-                    <MediaThumbnail source={this.state.thumbnail} />
-                    <VideoList streams={this.state.streams} />
+                    {
+                        this.checkIFDataIsAvailable()
+                    }
                 </div>
             </div>
         )

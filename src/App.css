@@ -1,11 +1,8 @@
 @media screen and (max-width: 480px) {
-
   #color-bisque, #color-black{
     font-size: 14px;
   }
-
 }
-
 .App {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,7 +12,6 @@
   margin: auto ;
   min-width: 300px;
 }
-
 #color-bisque{
   color: bisque;
   background-color: black;
@@ -23,7 +19,6 @@
   border-radius: 0px 14px 14px 0px;
   margin-left: -5px;
 }
-
 #color-black{
   color: black;
   background-color: bisque;
@@ -31,11 +26,9 @@
   border-radius: 14px 0px 0px 14px;
   margin-right: -5px;
 }
-
 .header h4{
   padding: 4px 10px;
 }
-
 input{
   padding: 10px 16px;
   border-color: bisque;
@@ -47,36 +40,44 @@ input{
   width: 100%;
   box-sizing: border-box;
 }
-
 .App button{
   font-size: 14px;
   padding: 10px;
-  font-weight: 500;
-  border-radius: 8px;
-  border-style: none;
-  color: bisque;
-  background-color: black;
   font-family: inherit;
   min-width: 200px;
   margin: 14px 8px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+  background-color: rgb(39, 38, 38);
+  color: bisque;
+  border: none;
+  border-radius: 45px;
+  cursor: pointer;
+  outline: none;
 }
-
-.get-media {
-  margin: auto;
-  margin-top: 20px;
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 #get-media-btn{
-  border: solid 4px bisque;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.425);
+  transition: all 0.3s ease 0s;
 }
-
-.Media-file img{
+#get-media-btn:hover {
+  background-color: rgb(254, 227, 193);
+  box-shadow: 0px 15px 20px rgba(254, 227, 193, 0.4);
+  color: black;
+  transform: translateY(-7px);
+}
+.Media-file{
   display: block;
   margin: auto;
   width: 300px;
   height: 300px;
 }
-
 select {
   font-size: 12px;
   font-family: inherit;
@@ -85,21 +86,10 @@ select {
   min-width: 200px;
   margin: 10px 10px;
 }
-/*
-
-input :focus {
-  border-color: black;
+.footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 12px;
 }
-
-
-
-
-
-.Media-file button {
-  width: 40%;
-  min-width: 300px;
-}
-
-
-
-*/
