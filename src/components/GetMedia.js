@@ -13,7 +13,8 @@ class GetMedia extends React.Component {
             thumbnail: '',
             streams: [],
             isDataAvailable: false,
-            showSpinner: false
+            showSpinner: false,
+            error: false
         };
 
         this.getMediaUrl = event => {
@@ -22,7 +23,7 @@ class GetMedia extends React.Component {
 
         this.getMediaDetails = async () => {
             let url = this.state.url
-            this.setState({ showSpinner: true })
+            this.setState({ showSpinner: true, error: false })
             console.log(url)
             this.getDownloadUrl(url)
         }
@@ -30,46 +31,57 @@ class GetMedia extends React.Component {
 
 
     getDownloadUrl(url) {
-        fetch(`https://getvideo.p.rapidapi.com/?url=${url}`, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "getvideo.p.rapidapi.com",
-                "x-rapidapi-key": process.env.RAPID_API_KEY,
-                "content-type": "application/json"
-            }
-        })
-            .then(response => {
-                response.json()
-                    .then(data => {
-                        console.log(data)
-                        this.setState({
-                            thumbnail: data.thumbnail,
-                            streams: data.streams,
-                            isDataAvailable: true
-                        })
-                    })
+        setTimeout(() => {
+            fetch(`https://getvideo.p.rapidapi.com/?url=${url}`, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "getvideo.p.rapidapi.com",
+                    "x-rapidapi-key": process.env.REACT_APP_RAPID_API_KEY,
+                    "content-type": "application/json"
+                }
             })
-            .catch(err => {
-                console.log(err);
-            });
+                .then(response => {
+                    response.json()
+                        .then(data => {
+                            console.log(data)
+                            this.setState({
+                                thumbnail: data.thumbnail,
+                                streams: data.streams || '',
+                                isDataAvailable: true
+                            })
+                        })
+                })
+                .catch(err => {
+                    console.log(err);
+                    this.setState({ error: true })
+                });
+        }, 10000)
+
 
     }
 
     checkIFDataIsAvailable() {
         if (this.state.isDataAvailable && this.state.showSpinner) {
+            if (this.state.thumbnail && this.state.streams) {
+                return (
+                    <div>
+                        <MediaThumbnail source={this.state.thumbnail} />
+                        <VideoList streams={this.state.streams} />
+                    </div>
+                )
+            }
+        }
+        else if (this.state.showSpinner === true && this.state.error === false) {
             return (
-                <div>
-                    <MediaThumbnail source={this.state.thumbnail} />
-                    <VideoList streams={this.state.streams} />
+                <div style={{marginTop:'40px'}}>
+                    <img width="100px" height="100px" src="spinner.gif"></img>
+                    <p style={{ color: 'black' }}>Fetching Data</p>
                 </div>
             )
         }
-        else if (this.state.showSpinner === true) {
+        else if (this.state.error) {
             return (
-                <div>
-                    <img width="100px" height="100px" src="spinner.gif" alt="spinner"></img>
-                    <p style={{ color: 'black' }}>Fetching Data</p>
-                </div>
+                <h1> An Error Occured</h1>
             )
         }
     }

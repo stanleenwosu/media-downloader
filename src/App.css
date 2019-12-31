@@ -2,15 +2,24 @@
   #color-bisque, #color-black{
     font-size: 14px;
   }
+  .Media-file img{
+    width: 80%;
+    height: 80%;
+  }
 }
+
 .App {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 .input-url {
-  width:50%;
+  width:90%;
   margin: auto ;
   min-width: 300px;
+  max-width: 700px;
+}
+.input-url :focus {
+  border: 2px solid gray;
 }
 #color-bisque{
   color: bisque;
@@ -30,7 +39,7 @@
   padding: 4px 10px;
 }
 input{
-  padding: 10px 16px;
+  padding: 10px 16px !important;
   border-color: bisque;
   border-style: solid;
   background-color: bisque;
@@ -39,6 +48,7 @@ input{
   font-family: inherit;
   width: 100%;
   box-sizing: border-box;
+  outline: none;
 }
 .App button{
   font-size: 14px;
@@ -47,14 +57,17 @@ input{
   min-width: 200px;
   margin: 14px 8px;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   font-weight: 600;
   background-color: rgb(39, 38, 38);
   color: bisque;
   border: none;
-  border-radius: 45px;
+  border-radius: 8px;
   cursor: pointer;
   outline: none;
+}
+.App button :active{
+  font-size: 100px;
 }
 .wrap {
   height: 100%;
@@ -62,21 +75,13 @@ input{
   align-items: center;
   justify-content: center;
 }
-#get-media-btn{
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.425);
-  transition: all 0.3s ease 0s;
-}
-#get-media-btn:hover {
-  background-color: rgb(254, 227, 193);
-  box-shadow: 0px 15px 20px rgba(254, 227, 193, 0.4);
-  color: black;
-  transform: translateY(-7px);
-}
 .Media-file{
   display: block;
   margin: auto;
-  width: 300px;
-  height: 300px;
+}
+.Media-file img{
+  width: 50%;
+  height: 50%;
 }
 select {
   font-size: 12px;
@@ -88,8 +93,32 @@ select {
 }
 .footer{
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   text-align: center;
   padding-bottom: 12px;
+  padding-top: 12px;
+  background-color: bisque;
+}
+
+.download-btn {
+  font-size: 14px;
+  padding: 10px 48px;
+  font-family: inherit;
+  min-width: 200px;
+  margin: 14px 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  background-color: rgb(39, 38, 38);
+  color: bisque;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}
+
+.Video-List {
+  margin-bottom: 50px;
 }
