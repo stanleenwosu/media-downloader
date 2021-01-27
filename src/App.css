@@ -1,0 +1,161 @@
+@media screen and (max-width: 480px) {
+  #color-bisque,
+  #color-black {
+    font-size: 14px;
+  }
+  .media-file img {
+    width: 90% !important;
+    height: 90% !important;
+  }
+  .ad-img {
+    width: 90% !important;
+    height: 90% !important;
+  }
+}
+:root {
+  --primary: hsl(235, 71%, 65%);
+  --secondary: hsl(200, 19%, 18%, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+}
+
+.header {
+  color: var(--primary);
+  background: url();
+}
+.input-url {
+  width: 90%;
+  margin: auto;
+  min-width: 300px;
+  max-width: 700px;
+}
+.input-url :focus {
+  border: 2px solid gray;
+}
+
+input {
+  padding: 10px 16px !important;
+  border-color: var(--primary);
+  border-style: solid;
+  background-color: transparent;
+  border-radius: 20px;
+  font-size: 1em;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.App button :active {
+  font-size: 100px;
+}
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media-file {
+  display: block;
+  margin: auto;
+}
+.media-file img {
+  width: 50%;
+  height: 50%;
+  border: solid 18px var(--primary);
+  border-radius: 6px;
+}
+select {
+  font-size: 12px;
+  font-family: inherit;
+  background-color: var(--primary);
+  color: white;
+  padding: 6px 6px;
+  min-width: 200px;
+  margin: 10px 10px;
+}
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  background-color: var(--primary);
+  color: white;
+}
+.Video-List {
+  margin-bottom: 50px;
+}
+
+.btn {
+  background-color: var(--primary);
+  border-radius: 4px;
+  box-shadow: hsla(240, 30%, 28%, 0.11) 0px 4px 6px 0px;
+  color: hsl(0, 0%, 100%);
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  gap: normal;
+  letter-spacing: 0.375px;
+  line-height: 40px;
+  margin: 10px 0;
+  padding: 0px 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-large {
+  font-size: 25px;
+  padding: 10px 20px;
+  margin: 10px 0;
+}
+.text-primary {
+  color: var(--primary);
+}
+.text-secondary {
+  color: var(--secondary);
+}
+
+.text-white {
+  color: white;
+}
+
+.btn-white {
+  color: var(--primary);
+  background-color: white;
+}
+
+.ad-img {
+  width: 400px;
+  height: 400px;
+}
+
+.footer-link {
+  background-color: white;
+  color: var(--primary);
+  padding: 4px;
+  margin: 2px;
+}
+
+.app-background {
+  filter: blur(4px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.app-foreground {
+  backdrop-filter: blur(10px);
+}
+
+.element {
+  backdrop-filter: grayscale(0.5) opacity(0.8) /* ...and on and on... */;
+}
