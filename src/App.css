@@ -28,7 +28,7 @@
 
 .header {
   color: var(--primary);
-  background: url();
+  /* background: url(); */
 }
 .input-url {
   width: 90%;
