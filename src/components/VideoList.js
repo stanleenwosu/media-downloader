@@ -27,10 +27,12 @@ class VideoList extends React.Component {
             ))}
           </select>
         </div>
-        <span>
+        <span hidden={this.state.downloadUrl ? false : true}>
           <a
             className="btn"
             style={{ margin: "2px" }}
+            rel='noreferrer noopener'
+            target = "_blank"
             href={this.state.downloadUrl}
           >
             <i className="fa fa-download mr-2"></i> Download
@@ -38,8 +40,8 @@ class VideoList extends React.Component {
           <p className="text-secondary">OR</p>
           <a className="btn-white">
             {" "}
-            <i class="fa fa-cloud-upload mr-2" aria-hidden="true"></i> Save to
-            Cloud
+            <i className="fa fa-cloud-upload mr-2" aria-hidden="true"></i> Save
+            to Cloud
           </a>
         </span>
       </div>
